@@ -21,6 +21,7 @@ public class BookService {
 	}
 	
 	public Iterable<Book> findAllBook() {
+		System.out.println(repo.findAll());
 		return repo.findAll();
 	}
 	

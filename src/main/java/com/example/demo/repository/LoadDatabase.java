@@ -18,6 +18,9 @@ public class LoadDatabase {
 		return args -> {
 			log.info("Preloading " + repository.save(new Book(12345L, "Book One", "John")));
 			log.info("Preloading " + repository.save(new Book(12346L, "Book Two", "Tommy")));
+			log.info("Preloading " + repository.save(new Book(12347L, "Book Three", "Tim")));
+			log.info("Preloading " + repository.save(new Book(12348L, "Book Four", "Sally")));
+			log.info("Preloading " + repository.save(new Book(12349L, "Book Five", "Brenda")));
 		};
 	}
 }

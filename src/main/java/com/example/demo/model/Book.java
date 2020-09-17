@@ -1,17 +1,19 @@
 package com.example.demo.model;
 
-import java.util.Objects;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Book {
 	
 	@Id
+	@NotNull(message="ISBN cannot be null")
 	private Long isbn;
 	
+	@NotNull(message="Title cannot be null")
 	private String title;
 	
+	@NotNull(message="Author cannot be null")
 	private String author;
 	
 	public Book() {
