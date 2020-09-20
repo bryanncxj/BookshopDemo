@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<title>Bookshop Demo</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Welcome to the Bookshop, User!</h1>
+        
+        <a href="/books">
+        	<button type="button">View all books</button>        
+        </a>
+        <br/>
+         
+        <h4>Get book by ISBN: </h4>
+        <form action="#" th:action="@{/book/{isbn}}" th:object="${book}" method="get" >
+        	<input type="text" th:field="*{isbn}"/> &nbsp; <button type="submit">Search </button>
+		</form>
+		
+    </body>
+</html>

@@ -1,4 +1,4 @@
-package com.example.demo.repository;
+package com.example.demo.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.example.demo.dao.BookRepository;
 import com.example.demo.model.Book;
 
 @Configuration
