@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +31,8 @@ import com.example.demo.service.BookService;
 import com.example.demo.service.Consumer;
 import com.example.demo.service.Producer;
 
-@Validated
 @RestController
+@Validated
 public class BookController {
 
 	@Autowired
@@ -43,8 +49,8 @@ public class BookController {
 		return new ResponseEntity<>(service.findAllBook(), HttpStatus.OK);
 	}
 
-	@GetMapping("/book")
-	public void findBookByIsbn(@Valid @RequestParam("isbn") Long isbn) {
+	@GetMapping("/book/{isbn}")
+	public void findBookByIsbn(@PathVariable Long isbn) {
 		Optional<Book> bkContainer = service.findBook(isbn);
 		if (bkContainer.isPresent()) {
 			this.producer.sendMessage(bkContainer.get());
@@ -56,18 +62,15 @@ public class BookController {
 
 	}
 	
-	
-	public ResponseEntity<Book> getReponseinJSON(Book bk) throws IOException {
+	public ResponseEntity<Book> getResponseinJSON(Book bk) throws IOException {
 		this.consumer.consume(bk);
 		if (bk != null) {
 			return new ResponseEntity<> (bk, HttpStatus.OK);			
 		}
 		else {
-			return new ResponseEntity<> (null, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<> (HttpStatus.NOT_FOUND);
 		}
 	}
-	
-	//public ResponseEntity<Book> publish()
 
 //	@PostMapping("/addBook")
 //	public Book addBook(@RequestParam(value = "isbn") Long isbn,

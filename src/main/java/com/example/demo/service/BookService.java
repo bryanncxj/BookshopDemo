@@ -18,7 +18,7 @@ public class BookService {
 	
 	public Book addBook(Book bk) {
 		bk = repo.save(bk);
-		System.out.println("[Service]: Book created: " + bk);
+		System.out.println("[Service] Book created: " + bk);
 		return bk;
 	}
 	
@@ -29,8 +29,13 @@ public class BookService {
 	
 	public Optional<Book> findBook(Long isbn) {
 		Optional<Book> bk = repo.findById(isbn);
-		System.out.println("[Service]: Book found: " + bk);
-		return bk;
+		if (bk.isPresent()) {
+			System.out.println("[Service] Book found: " + bk);			
+			return bk;
+		}
+		else { 
+			return null;
+		}
 	}
 
 	
