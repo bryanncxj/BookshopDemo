@@ -50,13 +50,13 @@ public class BookController {
 	}
 
 	@GetMapping("/books/{isbn}")
-	public ResponseEntity<Book> findBookByIsbn(@PathVariable @NotEmpty Long isbn) {
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable Long isbn) {
 		Book bk = service.findBook(isbn);
 		if (bk != null) {
-			
 			return new ResponseEntity<>(bk, HttpStatus.OK);
 		} 
 		else {
+			//System.out.println("No such resource");
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
 

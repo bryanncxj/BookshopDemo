@@ -5,8 +5,8 @@ A demo bookshop Spring Boot project using REST
 - Java 8+
 ## Steps
 ### Windows
-#### Start ZooKeeper service
 `cd <kafka folder>/bin/windows`
+#### Start ZooKeeper service
 1. `zookeeper-server-start.bat ../../config/zookeeper.properties`
 #### Start Kafka broker service
 1. `kafka-server-start.bat ../../config/server.properties`
@@ -18,7 +18,7 @@ A demo bookshop Spring Boot project using REST
 3. Enter `localhost:8080` to get prompt by Spring Security for credentials. Enter username as `user` and password as `password`.
 ..*If entering on Postman, go to **Authorization** and change type to **Basic Auth**, then enter credentials.
 4. Get all books records by entering `/books`
-5. Get an individual valid book record by entering `/book/<isbn>`, Kafka consumer will consume the individual book record that was produced in the Kafka topic.
+5. Get an individual valid book record by entering `/books/<isbn>`, Kafka consumer will consume the individual book record that was produced in the Kafka topic.
 To access H2 console, use `localhost:8080/h2-console` and connect.
 HTTP response can be viewed from Postman or browser console.
 Logout using `/logout`.
