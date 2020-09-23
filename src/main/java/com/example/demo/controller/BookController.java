@@ -50,7 +50,7 @@ public class BookController {
 	}
 
 	@GetMapping("/books/{isbn}")
-	public ResponseEntity<Book> findBookByIsbn(@PathVariable Long isbn) {
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable @NotEmpty Long isbn) {
 		Book bk = service.findBook(isbn);
 		if (bk != null) {
 			
