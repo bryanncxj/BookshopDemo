@@ -27,9 +27,10 @@ public class BookService {
 		return repo.findAll();
 	}
 	
-	public Optional<Book> findBook(Long isbn) {
-		Optional<Book> bk = repo.findById(isbn);
-		if (bk.isPresent()) {
+	public Book findBook(Long isbn) {
+		Book bk = repo.findByIsbn(isbn);
+		if (bk != null) {
+			this.producer.sendMessage(bk);
 			System.out.println("[Service] Book found: " + bk);			
 			return bk;
 		}

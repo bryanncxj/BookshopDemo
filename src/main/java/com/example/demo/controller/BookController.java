@@ -49,27 +49,17 @@ public class BookController {
 		return new ResponseEntity<>(service.findAllBook(), HttpStatus.OK);
 	}
 
-	@GetMapping("/book/{isbn}")
-	public void findBookByIsbn(@PathVariable Long isbn) {
-		Optional<Book> bkContainer = service.findBook(isbn);
-		if (bkContainer.isPresent()) {
-			this.producer.sendMessage(bkContainer.get());
-			//return new ResponseEntity<>(bkContainer.get(), HttpStatus.OK);
-		} 
-//		else {
-//			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-//		}
-
-	}
-	
-	public ResponseEntity<Book> getResponseinJSON(Book bk) throws IOException {
-		this.consumer.consume(bk);
+	@GetMapping("/books/{isbn}")
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable Long isbn) {
+		Book bk = service.findBook(isbn);
 		if (bk != null) {
-			return new ResponseEntity<> (bk, HttpStatus.OK);			
-		}
+			
+			return new ResponseEntity<>(bk, HttpStatus.OK);
+		} 
 		else {
-			return new ResponseEntity<> (HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
+
 	}
 
 //	@PostMapping("/addBook")
