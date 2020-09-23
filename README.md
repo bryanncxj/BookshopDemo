@@ -1,4 +1,5 @@
 # Bookshop Demo
+A demo bookshop Spring Boot project using REST
 ## Prerequisite
 - Apache Kafka version 2.13-2.60
 - Java 8+
