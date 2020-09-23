@@ -19,7 +19,9 @@ A demo bookshop Spring Boot project using REST
 ..*If entering on Postman, go to **Authorization** and change type to **Basic Auth**, then enter credentials.
 4. Get all books records by entering `/books`
 5. Get an individual valid book record by entering `/books/<isbn>`, Kafka consumer will consume the individual book record that was produced in the Kafka topic.
+
 To access H2 console, use `localhost:8080/h2-console` and connect.
+
 HTTP response can be viewed from Postman or browser console.
 Logout using `/logout`.
 ## Terminate Kafka environment
