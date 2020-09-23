@@ -16,7 +16,7 @@ A demo bookshop Spring Boot project using REST
 1. After cloning this repository, run `gradlew clean build`
 2. Then `gradlew bootRun`
 3. Enter `localhost:8080` to get prompt by Spring Security for credentials. Enter username as `user` and password as `password`.
-  * If entering on Postman, go to **Authorization** and change type to **Basic Auth**, then enter credentials.
+    * If entering on Postman, go to **Authorization** and change type to **Basic Auth**, then enter credentials.
 4. Get all books records by entering `/books`
 5. Get an individual valid book record by entering `/books/<isbn>`, Kafka consumer will consume the individual book record that was produced in the Kafka topic.
 
