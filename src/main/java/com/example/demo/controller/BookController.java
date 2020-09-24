@@ -4,10 +4,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +48,9 @@ public class BookController {
 		return new ResponseEntity<>(service.findAllBook(), HttpStatus.OK);
 	}
 
+	// Usage of @Digits because @Size does not work for type 'Long'
 	@GetMapping("/books/{isbn}")
-	public ResponseEntity<Book> findBookByIsbn(@PathVariable Long isbn) {
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable @Digits(integer=13, fraction=0, message = "ISBN must be 13 characters long") Long isbn) {
 		Book bk = service.findBook(isbn);
 		if (bk != null) {
 			return new ResponseEntity<>(bk, HttpStatus.OK);
