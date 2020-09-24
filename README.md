@@ -17,8 +17,8 @@ A demo bookshop Spring Boot project using REST
 #### Read events from topic using consumer
 1. `kafka-console-consumer.bat --topic bookTopic --from-beginning --bootstrap-servers localhost:9092`
 ## Running the application
-1. After cloning this repository, run `gradlew clean build`
-2. Then `gradlew bootRun`
+1. After cloning this repository, `cd bookshopdemo` and run `gradlew clean build`.
+2. Then `gradlew bootRun`.
 3. Enter `localhost:8080` to get prompt by Spring Security for credentials. Enter username as `user` and password as `password`.
     * If entering on Postman, go to **Authorization** and change type to **Basic Auth**, then enter credentials.
 4. Get all books records by entering `/books`
