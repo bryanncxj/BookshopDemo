@@ -48,9 +48,8 @@ public class BookController {
 		return new ResponseEntity<>(service.findAllBook(), HttpStatus.OK);
 	}
 
-	// Usage of @Digits because @Size does not work for type 'Long'
 	@GetMapping("/books/{isbn}")
-	public ResponseEntity<Book> findBookByIsbn(@PathVariable @Digits(integer=13, fraction=0, message = "ISBN must be 13 characters long") Long isbn) {
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable @Size(min=1, message = "ISBN contain at least 1 character") Long isbn) {
 		Book bk = service.findBook(isbn);
 		if (bk != null) {
 			return new ResponseEntity<>(bk, HttpStatus.OK);

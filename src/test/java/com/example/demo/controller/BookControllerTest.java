@@ -31,12 +31,12 @@ public class BookControllerTest {
 	private Consumer consumer;
 	
 	@Test
-	public void whenValidIsbnResponseOk() throws Exception {
+	public void expectUnauthorisedTest() throws Exception {
 		Book bk = new Book(224466L, "Mock Title", "Mock Author");
 		
 		Mockito.when(bookService.findBook(224466L)).thenReturn(bk);
 		
 		mockMvc.perform(get("/books/{isbn}", 224466L))
-				.andExpect(status().isOk());
+				.andExpect(status().is(401));
 	}
 }
