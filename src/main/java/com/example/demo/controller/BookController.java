@@ -49,7 +49,7 @@ public class BookController {
 	}
 
 	@GetMapping("/books/{isbn}")
-	public ResponseEntity<Book> findBookByIsbn(@PathVariable @Size(min=1, message = "ISBN contain at least 1 character") Long isbn) {
+	public ResponseEntity<Book> findBookByIsbn(@PathVariable @Digits(integer=13, fraction=0, message = "ISBN cannot exceed 13 characters") Long isbn) {
 		Book bk = service.findBook(isbn);
 		if (bk != null) {
 			return new ResponseEntity<>(bk, HttpStatus.OK);
