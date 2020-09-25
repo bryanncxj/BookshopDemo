@@ -32,10 +32,13 @@ public class BookControllerTest {
 	
 	@Test
 	public void expectUnauthorisedTest() throws Exception {
+		// Arrange
 		Book bk = new Book(224466L, "Mock Title", "Mock Author");
 		
+		// Act
 		Mockito.when(bookService.findBook(224466L)).thenReturn(bk);
 		
+		// Assert
 		mockMvc.perform(get("/books/{isbn}", 224466L))
 				.andExpect(status().is(401));
 	}

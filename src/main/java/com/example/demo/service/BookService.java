@@ -15,11 +15,11 @@ public class BookService {
 	@Autowired
 	Producer producer;
 	
-	public Book addBook(Book bk) {
-		bk = repo.save(bk);
-		System.out.println("[Service] Book created: " + bk);
-		return bk;
-	}
+//	public Book addBook(Book bk) {
+//		bk = repo.save(bk);
+//		System.out.println("[Service] Book created: " + bk);
+//		return bk;
+//	}
 	
 	public Iterable<Book> findAllBook() {
 		

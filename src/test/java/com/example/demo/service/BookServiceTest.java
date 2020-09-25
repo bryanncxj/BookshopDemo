@@ -25,9 +25,13 @@ public class BookServiceTest {
 
 	@Test
 	public void whenValidIsbnTitleShouldBeSame() {
+		// Arrange
 		Book bk = new Book(678921L, "Mock Title", "Mock Author");
+		
+		// Act
 		Mockito.when(mockBookRepository.findByIsbn(678921L)).thenReturn(bk);
 
+		// Assert
 		Assertions.assertEquals("Mock Title", mockBookService.findBook(678921L).getTitle());
 
 	}
